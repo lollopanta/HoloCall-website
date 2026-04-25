@@ -187,6 +187,7 @@ export function SequenceHero({
             HOLOCALL
           </a>
           <nav aria-label={copy.productSectionsLabel}>
+            <a href="/next-steps">{copy.nav.nextSteps}</a>
             <a href="#device">{copy.nav.device}</a>
             <a href="#system">{copy.nav.system}</a>
             <a href="#privacy">{copy.nav.privacy}</a>

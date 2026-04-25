@@ -18,6 +18,7 @@ export const translations = {
       productSectionsLabel: "Product sections",
       languageLabel: "Language",
       nav: {
+        nextSteps: "Next steps",
         device: "Device",
         system: "System",
         privacy: "Privacy",
@@ -140,6 +141,32 @@ export const translations = {
       contactBody:
         "HoloCall creates a bridge between older adults and their families: an accessible system that protects during emergencies and reduces emotional distance.",
       contactAction: "Discuss the project",
+      nextStepsAction: "View next steps",
+    },
+    nextSteps: {
+      label: "Next steps roadmap",
+      eyebrow: "Next steps",
+      title: "From working prototype to dependable daily product.",
+      body: "The next development cycle focuses on three concrete upgrades: a stronger physical and visual identity, reliable offline operation, and biometric data that can make alerts more useful.",
+      items: [
+        {
+          kicker: "01 / Product identity",
+          title: "Improve the aesthetics",
+          body: "Refine the device, interface, and presentation so HoloCall feels more polished, trustworthy, and ready to be shown beyond the prototype stage.",
+        },
+        {
+          kicker: "02 / Reliability",
+          title: "Work without Wi-Fi",
+          body: "Design a fallback mode that keeps emergency communication available even when the home network is unavailable or unstable.",
+        },
+        {
+          kicker: "03 / Health context",
+          title: "Add biometric parameters",
+          body: "Integrate vital or biometric indicators so family members receive richer context when an alert is triggered.",
+        },
+      ],
+      closing:
+        "The goal is simple: make HoloCall more independent, more informative, and easier to trust at home.",
     },
   },
   it: {
@@ -150,6 +177,7 @@ export const translations = {
       productSectionsLabel: "Sezioni prodotto",
       languageLabel: "Lingua",
       nav: {
+        nextSteps: "Prossimi step",
         device: "Dispositivo",
         system: "Sistema",
         privacy: "Privacy",
@@ -277,6 +305,32 @@ export const translations = {
       contactBody:
         "HoloCall crea un ponte tra anziani e familiari: un sistema accessibile che protegge in caso di emergenza e riduce la distanza emotiva.",
       contactAction: "Parla del progetto",
+      nextStepsAction: "Guarda i prossimi step",
+    },
+    nextSteps: {
+      label: "Roadmap prossimi step",
+      eyebrow: "Prossimi step",
+      title: "Dal prototipo funzionante a un prodotto affidabile ogni giorno.",
+      body: "Il prossimo ciclo di sviluppo si concentra su tre miglioramenti concreti: un’identità fisica e visiva più forte, il funzionamento senza rete Wi-Fi e dati biometrici utili durante le emergenze.",
+      items: [
+        {
+          kicker: "01 / Identità prodotto",
+          title: "Migliorare l’estetica",
+          body: "Rifinire dispositivo, interfaccia e presentazione per rendere HoloCall più curato, affidabile e pronto a essere mostrato oltre la fase di prototipo.",
+        },
+        {
+          kicker: "02 / Affidabilità",
+          title: "Funzionare senza Wi-Fi",
+          body: "Progettare una modalità di fallback che mantenga disponibile la comunicazione di emergenza anche quando la rete domestica non è presente o è instabile.",
+        },
+        {
+          kicker: "03 / Contesto sanitario",
+          title: "Inserire i parametri biometrici",
+          body: "Integrare indicatori vitali o biometrici per dare ai familiari più contesto quando viene attivato un allarme.",
+        },
+      ],
+      closing:
+        "L’obiettivo è semplice: rendere HoloCall più indipendente, più informativo e più facile da fidarsi in casa.",
     },
   },
 } as const;

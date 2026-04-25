@@ -1,5 +1,8 @@
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SequenceHero } from "./components/sequence-hero/sequence-hero";
 import {
   getInitialLanguage,
@@ -10,9 +13,12 @@ import {
 } from "./lib/i18n";
 import "./App.css";
 
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
 function App() {
   const [language, setLanguage] = useState<Language>(getInitialLanguage);
   const copy = translations[language];
+  const isNextStepsPage = window.location.pathname === "/next-steps";
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -39,6 +45,16 @@ function App() {
   useEffect(() => {
     persistLanguage(language);
   }, [language]);
+
+  if (isNextStepsPage) {
+    return (
+      <NextStepsPage
+        copy={copy}
+        language={language}
+        setLanguage={setLanguage}
+      />
+    );
+  }
 
   return (
     <main>
@@ -192,6 +208,114 @@ function App() {
         <p>{copy.page.contactBody}</p>
         <a className="contact-link" href="mailto:hello@holocall.local">
           {copy.page.contactAction}
+        </a>
+        <a className="secondary-link" href="/next-steps">
+          {copy.page.nextStepsAction}
+        </a>
+      </section>
+    </main>
+  );
+}
+
+interface NextStepsPageProps {
+  copy: (typeof translations)[Language];
+  language: Language;
+  setLanguage: (language: Language) => void;
+}
+
+function NextStepsPage({ copy, language, setLanguage }: NextStepsPageProps) {
+  const pageRef = useRef<HTMLElement | null>(null);
+
+  useGSAP(
+    () => {
+      const cards = gsap.utils.toArray<HTMLElement>(".next-step-card");
+
+      gsap.from(".next-steps-hero > *", {
+        autoAlpha: 0,
+        y: 34,
+        duration: 0.85,
+        stagger: 0.12,
+        ease: "power3.out",
+      });
+
+      for (const card of cards) {
+        gsap.from(card, {
+          autoAlpha: 0,
+          y: 80,
+          scale: 0.96,
+          duration: 0.9,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 78%",
+            end: "bottom 58%",
+            scrub: 0.55,
+          },
+        });
+      }
+
+      gsap.to(".roadmap-line", {
+        scaleY: 1,
+        transformOrigin: "top",
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".next-steps-list",
+          start: "top 70%",
+          end: "bottom 42%",
+          scrub: true,
+        },
+      });
+    },
+    { scope: pageRef }
+  );
+
+  return (
+    <main className="next-steps-page" ref={pageRef}>
+      <header className="next-steps-nav">
+        <a className="brand" href="/">
+          HOLOCALL
+        </a>
+        <nav aria-label={copy.hero.languageLabel}>
+          <fieldset className="language-switcher">
+            <legend>{copy.hero.languageLabel}</legend>
+            {(Object.keys(languages) as Language[]).map((option) => (
+              <button
+                aria-pressed={language === option}
+                key={option}
+                onClick={() => setLanguage(option)}
+                type="button"
+              >
+                {languages[option]}
+              </button>
+            ))}
+          </fieldset>
+        </nav>
+      </header>
+
+      <section
+        aria-label={copy.nextSteps.label}
+        className="next-steps-hero content-section"
+      >
+        <p className="eyebrow">{copy.nextSteps.eyebrow}</p>
+        <h1>{copy.nextSteps.title}</h1>
+        <p>{copy.nextSteps.body}</p>
+      </section>
+
+      <section className="next-steps-list content-section">
+        <div aria-hidden="true" className="roadmap-line" />
+        {copy.nextSteps.items.map((item) => (
+          <article className="next-step-card" key={item.kicker}>
+            <span>{item.kicker}</span>
+            <h2>{item.title}</h2>
+            <p>{item.body}</p>
+          </article>
+        ))}
+      </section>
+
+      <section className="next-steps-closing content-section">
+        <p>{copy.nextSteps.closing}</p>
+        <a className="contact-link" href="/">
+          HOLOCALL
         </a>
       </section>
     </main>
