@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "root": true,
+  "extends": ["ultracite/biome/core", "ultracite/biome/react"],
+  "files": {
+    "includes": [
+      "**",
+      "!!dist",
+      "!!node_modules",
+      "!!.playwright-cli",
+      "!!sf-website"
+    ]
+  }
+}

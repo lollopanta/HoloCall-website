@@ -1,6 +1,7 @@
 # Logs
 logs
 *.log
+.DS_Store
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -141,3 +142,12 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Legacy site copy
+sf-website/
+
+# Browser verification output
+.playwright-cli/
+
+# Local agent skills
+.agents/

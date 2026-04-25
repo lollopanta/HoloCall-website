@@ -1,0 +1,103 @@
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("/fonts/NeueMontreal-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Neue Montreal";
+  src: url("/fonts/NeueMontreal-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Messina Sans Mono";
+  src: url("/fonts/MessinaSansMono-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --black: rgb(0, 0, 0);
+  --white: rgb(255, 254, 244);
+  --grey: rgb(144, 144, 144);
+  --green: rgb(0, 162, 255);
+  --line: rgba(255, 254, 244, 0.18);
+  --glass: rgba(255, 254, 244, 0.07);
+  --layout-margin: 24px;
+  --font: "Neue Montreal", Arial, Helvetica, sans-serif;
+  --font-secondary: "Messina Sans Mono", ui-monospace, monospace;
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+
+  color: var(--white);
+  background: var(--black);
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scrollbar-width: thin;
+  background: var(--black);
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--black);
+}
+
+body,
+button,
+a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  color: inherit;
+}
+
+p {
+  margin: 0;
+}
+
+::selection {
+  color: var(--black);
+  background: var(--green);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.eyebrow {
+  font-family: var(--font-secondary);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--green);
+  text-transform: uppercase;
+}
+
+@media (max-width: 800px) {
+  :root {
+    --layout-margin: 18px;
+  }
+}
